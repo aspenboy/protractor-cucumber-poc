@@ -7,15 +7,20 @@ let fs = require("fs");
 let mkdirp = require("mkdirp");
 let Cucumber = require("cucumber");
 
-defineSupportCode(function ({ registerHandler, After, registerListener }) {
+defineSupportCode(function ({ registerHandler, After, Before, registerListener }) {
+
+    var attach;
+
+    Before(function () {
+        attach = this.attach;
+    })
 
     registerHandler('BeforeScenario', function (features, callback) {
         browser.get('http://localhost:8080/wicket-examples/');
         callback();
     });
 
-    After(function (scenario) {
-        let attach = this.attach;
+    registerHandler('AfterStep', function (scenario) {
         return browser.takeScreenshot().then(function (png) {
             let decodedImage = new Buffer(png, "base64");
             return attach(decodedImage, "image/png");
