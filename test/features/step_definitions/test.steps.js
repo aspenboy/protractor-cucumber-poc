@@ -1,17 +1,17 @@
-var seleniumWebdriver = require('selenium-webdriver');
-var { defineSupportCode } = require('cucumber');
-var chai = require('chai');
-var chaiAsPromised = require('chai-as-promised');
+let seleniumWebdriver = require('selenium-webdriver');
+let { defineSupportCode } = require('cucumber');
+let chai = require('chai');
+let chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-var expect = chai.expect;
+let expect = chai.expect;
 
 defineSupportCode(function ({ Given, When, Then }) {
 
-    var usernameInput = element(by.css("dl > dd > input[name=\"username\"]"));
-    var passwordInput = element(by.css("dl > dd > input[name=\"password\"]"));
-    var submitButton = element(by.css("dl > dd > input[name=\"submit\"]"));
-    var signOutButton = element(by.xpath("//body//p//a[2]"));
-    var errorMessage = element(by.css(".feedbackPanel > .feedbackPanelERROR"));
+    let usernameInput = element(by.css("dl > dd > input[name=\"username\"]"));
+    let passwordInput = element(by.css("dl > dd > input[name=\"password\"]"));
+    let submitButton = element(by.css("dl > dd > input[name=\"submit\"]"));
+    let signOutButton = element(by.xpath("//body//p//a[2]"));
+    let errorMessage = element(by.css(".feedbackPanel > .feedbackPanelERROR"));
 
     Given("I'm on a library's login page", function () {
         return browser.get("http://localhost:8080/wicket-examples/library");

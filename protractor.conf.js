@@ -19,7 +19,7 @@ exports.config = {
 
     cucumberOpts: {
         require: ['test/features/step_definitions/*.steps.js',
-            'test/features/step_definitions/handlers.js']
+            'test/features/support/handlers.js']
     },
 
     onPrepare: function () {
