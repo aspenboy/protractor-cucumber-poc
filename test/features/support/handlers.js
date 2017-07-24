@@ -15,16 +15,15 @@ defineSupportCode(function ({ registerHandler, After, Before, registerListener }
         attach = this.attach;
     })
 
-    registerHandler('BeforeScenario', function (features, callback) {
-        browser.get('http://localhost:8080/wicket-examples/');
-        callback();
-    });
-
-    registerHandler('AfterStep', function (scenario) {
+    registerHandler('AfterStep', function () {
         return browser.takeScreenshot().then(function (png) {
             let decodedImage = new Buffer(png, "base64");
             return attach(decodedImage, "image/png");
         });
+    });
+
+    registerHandler('BeforeScenario', function ()  {
+        return browser.get('http://localhost:8080/wicket-examples/');
     });
 
     let cucumberReporteroptions = {
