@@ -7,14 +7,14 @@ var expect = chai.expect;
 
 defineSupportCode(function ({ Given, When, Then }) {
 
-    var usernameInput = element(by.id("id1")).$("dl > dd > input[name=\"username\"]");
-    var passwordInput = element(by.id("id1")).$("dl > dd > input[name=\"password\"]");
-    var submitButton = element(by.id("id1")).$("dl > dd > input[name=\"submit\"]");
+    var usernameInput = element(by.css("dl > dd > input[name=\"username\"]"));
+    var passwordInput = element(by.css("dl > dd > input[name=\"password\"]"));
+    var submitButton = element(by.css("dl > dd > input[name=\"submit\"]"));
     var signOutButton = element(by.xpath("//body//p//a[2]"));
     var errorMessage = element(by.css(".feedbackPanel > .feedbackPanelERROR"));
 
     Given("I'm on a library's login page", function () {
-        browser.get("http://localhost:8080/wicket-examples/library");
+        return browser.get("http://localhost:8080/wicket-examples/library");
     });
 
     When('I enter valid credentials', function () {
