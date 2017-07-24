@@ -18,7 +18,8 @@ exports.config = {
     // baseURL: 'http://localhost:8080/wicket-examples/',
 
     cucumberOpts: {
-        require: 'test/steps/*.steps.js',
+        require: ['test/features/step_definitions/*.steps.js',
+            'test/features/step_definitions/handlers.js']
     },
 
     onPrepare: function () {
