@@ -1,8 +1,4 @@
 let { defineSupportCode } = require('cucumber');
-let chai = require('chai');
-let chaiAsPromised = require('chai-as-promised');
-chai.use(chaiAsPromised);
-let expect = chai.expect;
 
 defineSupportCode(function ({ Given, When, Then }) {
 
@@ -32,5 +28,9 @@ defineSupportCode(function ({ Given, When, Then }) {
 
     Then('I should see the message in the info panel', function () {
         return expect(feedbackInfo.getText()).to.eventually.equal('set date to Sat Jul 01 00:00:00 CEST 2017');
+    });
+    
+    Then('I will look for incorrect date just to fail the scenario on purpose', function () {
+        return expect(feedbackInfo.getText()).to.eventually.equal('set date to Sat Jul 01 00:00:00 CEST 2015');
     });
 });

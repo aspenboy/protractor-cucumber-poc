@@ -1,13 +1,12 @@
 require('chromedriver');
-var seleniumWebdriver = require('selenium-webdriver');
-var { defineSupportCode } = require('cucumber');
+let seleniumWebdriver = require('selenium-webdriver');
+let { defineSupportCode } = require('cucumber');
 
-function CustomWorld() {
-    // this.driver = new seleniumWebdriver.Builder()
-    //     .forBrowser('chrome')
-    //     .build();
+function CustomWorld({ attach, parameters }) {
+    this.attach = attach
+    this.parameters = parameters
 }
 
-defineSupportCode(function({setWorldConstructor}) {
+defineSupportCode(function ({ setWorldConstructor }) {
     setWorldConstructor(CustomWorld);
 });

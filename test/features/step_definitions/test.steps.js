@@ -1,9 +1,5 @@
 let seleniumWebdriver = require('selenium-webdriver');
 let { defineSupportCode } = require('cucumber');
-let chai = require('chai');
-let chaiAsPromised = require('chai-as-promised');
-chai.use(chaiAsPromised);
-let expect = chai.expect;
 
 defineSupportCode(function ({ Given, When, Then }) {
 
@@ -34,12 +30,6 @@ defineSupportCode(function ({ Given, When, Then }) {
     When(`I click "submit" button`, function () {
         return submitButton.click();
     });
-
-    // Not used for now
-    // When('I enter incorrect combination of credentials', function(table) {
-    //     element(by.id("id1")).$("dl > dd > input[name=\"username\"]").sendKeys(table.rows()[0]);
-    //     return element(by.id("id1")).$("dl > dd > input[name=\"password\"]").sendKeys(table.rows()[1]);
-    // });
 
     Then('I will have access to the library', function () {
         expect(signOutButton.isDisplayed()).to.be.eventually.true;
